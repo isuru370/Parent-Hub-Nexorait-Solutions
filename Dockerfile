@@ -15,8 +15,18 @@ RUN echo "RemoteIPHeader X-Forwarded-For" >> /etc/apache2/apache2.conf && \
 # Install system dependencies
 # ----------------------------
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl libzip-dev libonig-dev libpng-dev \
-    libxml2-dev libicu-dev libjpeg-dev libfreetype6-dev build-essential \
+    git \
+    unzip \
+    zip \
+    curl \
+    libzip-dev \
+    libonig-dev \
+    libpng-dev \
+    libxml2-dev \
+    libicu-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    build-essential \
     default-mysql-client \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
@@ -29,6 +39,13 @@ RUN apt-get update && apt-get install -y \
         intl \
         exif \
     && rm -rf /var/lib/apt/lists/*
+
+# ----------------------------
+# Install Node.js
+# ----------------------------
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get update \
+    && apt-get install -y nodejs
 
 # ----------------------------
 # Install Composer
@@ -46,14 +63,21 @@ WORKDIR /var/www/html
 COPY . .
 
 # ----------------------------
-# Install Laravel dependencies
+# Install PHP dependencies
 # ----------------------------
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+
+# ----------------------------
+# Install Node dependencies & Build Vite
+# ----------------------------
+RUN npm install
+RUN npm run build
 
 # ----------------------------
 # Set Apache document root to /public
 # ----------------------------
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/*.conf \
     /etc/apache2/apache2.conf
@@ -65,8 +89,11 @@ RUN chown -R www-data:www-data storage bootstrap/cache public/uploads || true &&
     chmod -R 775 storage bootstrap/cache public/uploads || true
 
 # ----------------------------
-# Expose port
+# Expose Apache
 # ----------------------------
 EXPOSE 80
 
+# ----------------------------
+# Start Apache
+# ----------------------------
 CMD ["apache2-foreground"]
