@@ -65,6 +65,19 @@ class PortalSession
         return $this->session->get(self::KEY . '.username');
     }
 
+    /** The browser push token sent to the institute for this login, if any. */
+    public function pushDevice(): ?array
+    {
+        $device = $this->session->get(self::KEY . '.push');
+
+        return is_array($device) && !empty($device['token']) ? $device : null;
+    }
+
+    public function setPushDevice(array $device): void
+    {
+        $this->session->put(self::KEY . '.push', $device);
+    }
+
     public function forget(): void
     {
         $this->session->forget(self::KEY);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\AuthService;
+use App\Services\Portal\PortalApi;
 use App\Services\Portal\PortalSession;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -78,6 +79,12 @@ class LoginController extends Controller
     public function logout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
+
+        // Stop this browser getting the student's notifications.
+        if ($device = $this->portal->pushDevice()) {
+            app(PortalApi::class)->removeFcmToken($device);
+        }
+
         $this->portal->forget();
 
         $request->session()->invalidate();

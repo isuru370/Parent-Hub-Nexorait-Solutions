@@ -19,6 +19,12 @@ Wrong passwords are rate limited (`HUB_LOGIN_ATTEMPTS`, default 5 per minute).
 Home, attendance, fees (month by month), exams and results, class schedule, messages, profile and password change.
 Data is read live from the student's institute; the hub stores no marks or payments.
 
+### Notifications in the browser
+When the `FIREBASE_*` values are set, the portal asks parents to turn on notifications. The browser's FCM token is
+sent to the student's institute (`POST {institute}/api/parent/v1/fcm/token`, `device_type=web`) and saved in its
+`fcm_tokens` table, so the institute's push notifications reach the browser like the app. Logging out marks the
+token inactive. Institutes that do not accept `web` yet get the token as `android` (delivery is the same).
+
 ### Admin area (`/admin`)
 Dashboard, institutes (edit URL, enable/disable, last seen), students (search, block/unblock), parent app versions
 (latest / force update), admins (add, disable), settings (support phone/email, portal notice).
