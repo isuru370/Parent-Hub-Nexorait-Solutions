@@ -7,12 +7,11 @@ use App\Http\Controllers\Web\Admin\InstituteController;
 use App\Http\Controllers\Web\Admin\SettingController;
 use App\Http\Controllers\Web\Admin\StudentController;
 use App\Http\Controllers\Web\Auth\LoginController;
+use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\Portal\PortalController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/privacy-policy', function () {
     return view('privacy_policy');
