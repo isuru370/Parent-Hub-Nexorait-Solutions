@@ -13,7 +13,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'hub.secret' => \App\Http\Middleware\VerifyHubSecret::class,
+            'hub.admin' => \App\Http\Middleware\EnsureHubAdmin::class,
+            'portal' => \App\Http\Middleware\EnsurePortalStudent::class,
+        ]);
+
+        // Not logged in -> the one login page
+        $middleware->redirectGuestsTo(fn () => route('login'));
+        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

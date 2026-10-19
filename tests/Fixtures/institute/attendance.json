@@ -1,0 +1,41 @@
+{
+    "status": true,
+    "message": "Attendance fetched successfully.",
+    "data": {
+        "summary": {
+            "total_schedules": 1,
+            "total_classes": 1,
+            "present_classes": 1,
+            "absent_classes": 0,
+            "attendance_percentage": 100
+        },
+        "classes": [
+            {
+                "class_id": 173,
+                "class_name": "Maths 10 CMB",
+                "category_name": "Theory",
+                "grade_name": "10",
+                "teacher": "N.",
+                "total_schedules": 1,
+                "present_classes": 1,
+                "absent_classes": 0,
+                "attendance_percentage": 100,
+                "attendance_history": [
+                    {
+                        "schedule_id": 169,
+                        "class_date": "2026-10-19",
+                        "start_time": "15:00",
+                        "end_time": "17:00",
+                        "is_present": true,
+                        "attended_at": "2026-10-19T18:00:50.000000Z",
+                        "mark_method": "qr_mobile",
+                        "marked_by": {
+                            "id": null,
+                            "name": null
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

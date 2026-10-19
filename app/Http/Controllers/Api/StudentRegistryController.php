@@ -16,16 +16,7 @@ class StudentRegistryController extends Controller
         RegisterStudentRequest $request
     ) {
 
-        if (
-            $request->secret_key !==
-            config('services.parent_hub.secret')
-        ) {
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Unauthorized',
-            ], 401);
-        }
+        // secret_key is checked by the hub.secret middleware
 
         $student =
             $this->studentRegistryService

@@ -39,12 +39,6 @@ return new class extends Migration
             );
 
             $table->unique('username');
-
-            // Remove this line if student_custom_id
-            // was not unique before.
-            $table->dropUnique([
-                'student_custom_id'
-            ]);
         });
     }
 };
