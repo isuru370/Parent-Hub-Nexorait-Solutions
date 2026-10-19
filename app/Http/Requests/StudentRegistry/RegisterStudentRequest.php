@@ -36,6 +36,8 @@ class RegisterStudentRequest extends FormRequest
                 'required',
                 'string',
                 'max:20',
+                // The institute must register itself first (register-institute)
+                'exists:institutes,code',
             ],
 
             'status' => [
@@ -43,6 +45,13 @@ class RegisterStudentRequest extends FormRequest
                 'boolean',
             ],
 
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'institute_code.exists' => 'Unknown institute. Call register-institute first.',
         ];
     }
 }

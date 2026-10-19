@@ -1,0 +1,51 @@
+{
+    "success": true,
+    "message": "Notifications retrieved successfully",
+    "data": {
+        "items": [
+            {
+                "id": 7,
+                "title": "Payment received",
+                "body": "October fee Rs. 2,000 paid. Receipt R-1024.",
+                "type": "payment",
+                "type_label": "Payment",
+                "type_icon": "fa-credit-card",
+                "status": "sent",
+                "status_label": "Sent",
+                "is_read": false,
+                "read_at": null,
+                "sent_at": "2026-10-19T18:00:50.000000Z",
+                "scheduled_at": null,
+                "created_at": "2026-10-19T18:00:50.000000Z",
+                "data": null,
+                "student": {
+                    "id": 567,
+                    "name": "A. Silva",
+                    "custom_id": "S1"
+                }
+            }
+        ],
+        "pagination": {
+            "total": 1,
+            "per_page": 20,
+            "current_page": 1,
+            "last_page": 1,
+            "from": 1,
+            "to": 1
+        },
+        "stats": {
+            "total": 1,
+            "unread": 1,
+            "read": 0,
+            "by_type": {
+                "general": 0,
+                "reminder": 0,
+                "exam": 0,
+                "announcement": 0,
+                "attendance": 0,
+                "grade": 0,
+                "payment": 1
+            }
+        }
+    }
+}

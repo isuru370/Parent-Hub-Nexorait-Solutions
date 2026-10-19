@@ -1,0 +1,84 @@
+{
+    "status": true,
+    "message": "Dashboard data fetched successfully",
+    "data": {
+        "banner": {
+            "title": "ඔබගේ දරුවාගේ අධ්‍යාපන ගමන හිතට ගන්න",
+            "subtitle": "සරලව, විශ්වාසයෙන්, එක තැනක",
+            "description": "දරුවාගේ පන්ති කාලසටහන්, විභාග ප්‍රතිඵල, පැමිණීම, ගෙවීම් තත්වය සහ ආයතන නිවේදන මෙම යෙදුම හරහා පහසුවෙන් නිරීක්ෂණය කරන්න. ඔබේ දරුවාගේ අධ්‍යාපනික ප්‍රගතිය හා බැඳී සිටීමට උපකාරී වන සියලුම විශේෂාංග එකම ස්ථානයක."
+        },
+        "student": {
+            "id": 567,
+            "custom_id": "S1",
+            "temporary_qr_code": null,
+            "initial_name": "A. Silva",
+            "grade": "10",
+            "img_url": "x"
+        },
+        "total_classes": 1,
+        "notification": {
+            "unread_count": 1,
+            "latest_unread": [
+                {
+                    "id": 7,
+                    "title": "Payment received",
+                    "body": "October fee Rs. 2,000 paid. Receipt R-1024.",
+                    "type": "payment",
+                    "created_at": "2026-10-19T18:00:50.000000Z"
+                }
+            ]
+        },
+        "today_classes": [
+            {
+                "id": 169,
+                "class_date": "2026-10-18T18:30:00.000000Z",
+                "start_time": "15:00",
+                "end_time": "17:00",
+                "status": "completed",
+                "live_status": "completed",
+                "student_class": {
+                    "id": 173,
+                    "class_name": "Maths 10 CMB",
+                    "subject": {
+                        "id": 87,
+                        "subject_name": "Maths"
+                    },
+                    "teacher": {
+                        "id": 87,
+                        "full_name": "Nimal Perera"
+                    }
+                }
+            }
+        ],
+        "this_week_classes": [],
+        "upcoming_exams": [],
+        "recent_payments": [
+            {
+                "id": 613,
+                "amount": 999,
+                "payment_month": "2026-11-01",
+                "paid_at": "2026-10-13T07:30:00.000000Z",
+                "mark_method": "qr_mobile",
+                "status": "cancelled",
+                "class_name": "Maths 10 CMB",
+                "collected_by": {
+                    "id": 467,
+                    "name": "Cashier"
+                }
+            },
+            {
+                "id": 609,
+                "amount": 2000,
+                "payment_month": "2026-10-01",
+                "paid_at": "2026-10-13T03:30:00.000000Z",
+                "mark_method": "qr_mobile",
+                "status": "completed",
+                "class_name": "Maths 10 CMB",
+                "collected_by": {
+                    "id": 467,
+                    "name": "Cashier"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "status": true,
+    "message": "Result fetched successfully.",
+    "data": {
+        "exam": {
+            "id": 1,
+            "title": "Term test",
+            "exam_date": "2026-10-18",
+            "start_time": "09:00",
+            "end_time": "11:00",
+            "status": "completed",
+            "student_class": {
+                "id": 173,
+                "class_name": "Maths 10 CMB"
+            },
+            "subject": {
+                "id": 87,
+                "subject_name": "Maths"
+            },
+            "teacher": {
+                "id": 87,
+                "full_name": "Nimal Perera"
+            },
+            "category": {
+                "id": 87,
+                "category_name": "Theory"
+            },
+            "hall": {
+                "id": null,
+                "hall_name": null
+            }
+        },
+        "student_result": {
+            "marks": 78,
+            "max_marks": 100,
+            "percentage": 78,
+            "grade": "A",
+            "rank": 1,
+            "status": "passed",
+            "remark": null,
+            "is_absent": false
+        },
+        "top_rankings": [
+            {
+                "rank": 1,
+                "student": {
+                    "id": 567,
+                    "initial_name": "A. Silva"
+                },
+                "marks": 78,
+                "max_marks": 100,
+                "percentage": 78,
+                "grade": "A",
+                "is_absent": false
+            }
+        ]
+    }
+}
