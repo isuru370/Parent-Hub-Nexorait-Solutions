@@ -50,6 +50,19 @@
                 </form>
             </section>
 
+            @if (\App\Support\WebPush::enabled())
+                <section data-push-section hidden class="rounded-2xl border border-stone-200 bg-white p-5">
+                    <div class="flex items-start gap-3">
+                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-50 text-red-600"><x-icon name="bell" class="h-5 w-5" /></span>
+                        <div class="min-w-0 flex-1">
+                            <h2 class="font-bold">Notifications on this device</h2>
+                            <p data-push-status data-tone="muted" class="mt-1 text-sm text-gray-500 data-[tone=error]:text-red-700 data-[tone=on]:text-emerald-700">Checking...</p>
+                        </div>
+                    </div>
+                    <button type="button" data-push-enable hidden class="mt-4 w-full rounded-xl bg-red-600 px-4 py-2.5 font-semibold text-white hover:bg-red-700 disabled:opacity-60">Turn on notifications</button>
+                </section>
+            @endif
+
             @if ($supportPhone || $supportEmail)
                 <section class="rounded-2xl border border-stone-200 bg-white p-5 text-sm">
                     <h2 class="font-bold">Need help?</h2>

@@ -67,6 +67,10 @@
 
     @include('partials.flash')
 
+    @if (\App\Support\WebPush::enabled() && request()->routeIs('portal.dashboard') && empty($error))
+        @include('portal.partials.push-prompt')
+    @endif
+
     @if (!empty($error))
         <div class="rounded-2xl border border-amber-200 bg-amber-50 p-6 text-center">
             <x-icon name="warning" class="mx-auto h-8 w-8 text-amber-600" />
@@ -91,5 +95,9 @@
         @endforeach
     </div>
 </nav>
+
+@if (\App\Support\WebPush::enabled())
+    @include('portal.partials.push-script')
+@endif
 </body>
 </html>

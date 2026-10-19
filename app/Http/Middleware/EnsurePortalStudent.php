@@ -19,6 +19,10 @@ class EnsurePortalStudent
     public function handle(Request $request, Closure $next): Response
     {
         if (!$this->portal->check()) {
+            if ($request->expectsJson()) {
+                return response()->json(['status' => false, 'message' => 'Please log in again.'], 401);
+            }
+
             return redirect()->guest(route('login'));
         }
 
