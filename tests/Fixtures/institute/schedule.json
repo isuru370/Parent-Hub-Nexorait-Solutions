@@ -1,0 +1,47 @@
+{
+    "success": true,
+    "message": "Class schedules fetched successfully.",
+    "data": [
+        {
+            "id": 169,
+            "student_class_id": 173,
+            "class_category_fee_id": 173,
+            "class_hall_id": null,
+            "class_date": "2026-10-18T18:30:00.000000Z",
+            "start_time": "15:00",
+            "end_time": "17:00",
+            "day_of_week": "monday",
+            "status": "completed",
+            "note": null,
+            "student_class": {
+                "id": 173,
+                "class_name": "Maths 10 CMB",
+                "teacher_id": 87,
+                "subject_id": 87,
+                "grade_id": 87,
+                "teacher": {
+                    "id": 87,
+                    "full_name": "Nimal Perera",
+                    "mobile": "1"
+                },
+                "subject": {
+                    "id": 87,
+                    "subject_name": "Maths"
+                },
+                "grade": {
+                    "id": 87,
+                    "grade_name": "10"
+                }
+            },
+            "class_category_fee": {
+                "id": 173,
+                "class_category_id": 87,
+                "category": {
+                    "id": 87,
+                    "category_name": "Theory"
+                }
+            },
+            "hall": null
+        }
+    ]
+}

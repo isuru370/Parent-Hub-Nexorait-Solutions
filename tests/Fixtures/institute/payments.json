@@ -1,0 +1,165 @@
+{
+    "status": true,
+    "message": "Payment history fetched successfully.",
+    "data": {
+        "summary": {
+            "total_classes": 1,
+            "total_payments": 2,
+            "total_paid_amount": 2999,
+            "total_unpaid_months": 9,
+            "current_month": "2026-10"
+        },
+        "classes": [
+            {
+                "class_id": 173,
+                "class_name": "Maths 10 CMB",
+                "category_name": "Theory",
+                "grade_name": "10",
+                "teacher": "N.",
+                "monthly_fee": 0,
+                "is_current_month_paid": true,
+                "current_month": "2026-10",
+                "payment_count": 2,
+                "total_paid_amount": 2999,
+                "unpaid_months_count": 9,
+                "unpaid_months": [
+                    "2026-01",
+                    "2026-02",
+                    "2026-03",
+                    "2026-04",
+                    "2026-05",
+                    "2026-06",
+                    "2026-07",
+                    "2026-08",
+                    "2026-09"
+                ],
+                "paid_months": [
+                    "2026-11",
+                    "2026-10"
+                ],
+                "all_months": [
+                    "2026-01",
+                    "2026-02",
+                    "2026-03",
+                    "2026-04",
+                    "2026-05",
+                    "2026-06",
+                    "2026-07",
+                    "2026-08",
+                    "2026-09",
+                    "2026-10"
+                ],
+                "month_status": [
+                    {
+                        "month": "2026-01",
+                        "month_name": "January 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-02",
+                        "month_name": "February 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-03",
+                        "month_name": "March 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-04",
+                        "month_name": "April 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-05",
+                        "month_name": "May 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-06",
+                        "month_name": "June 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-07",
+                        "month_name": "July 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-08",
+                        "month_name": "August 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-09",
+                        "month_name": "September 2026",
+                        "is_paid": false,
+                        "status": "unpaid",
+                        "is_current": false
+                    },
+                    {
+                        "month": "2026-10",
+                        "month_name": "October 2026",
+                        "is_paid": true,
+                        "status": "paid",
+                        "is_current": true
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": 613,
+                        "receipt_number": "R5",
+                        "payment_month": "2026-11",
+                        "payment_month_name": "November 2026",
+                        "amount": 999,
+                        "discount_amount": 0,
+                        "paid_at": "2026-10-13T07:30:00.000000Z",
+                        "payment_method": "cash",
+                        "mark_method": "qr_mobile",
+                        "status": "cancelled",
+                        "reference_number": null,
+                        "note": null,
+                        "collected_by": {
+                            "id": 467,
+                            "name": "Cashier"
+                        }
+                    },
+                    {
+                        "payment_id": 609,
+                        "receipt_number": "R1",
+                        "payment_month": "2026-10",
+                        "payment_month_name": "October 2026",
+                        "amount": 2000,
+                        "discount_amount": 0,
+                        "paid_at": "2026-10-13T03:30:00.000000Z",
+                        "payment_method": "cash",
+                        "mark_method": "qr_mobile",
+                        "status": "completed",
+                        "reference_number": null,
+                        "note": null,
+                        "collected_by": {
+                            "id": 467,
+                            "name": "Cashier"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
