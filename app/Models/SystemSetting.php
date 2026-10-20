@@ -16,6 +16,8 @@ class SystemSetting extends Model
         'support_phone' => 'Support phone',
         'support_email' => 'Support email',
         'portal_notice' => 'Notice shown on the student portal',
+        'android_app_url' => 'Android app link (Google Play)',
+        'ios_app_url' => 'iPhone app link (App Store)',
     ];
 
     protected const CACHE_KEY = 'system_settings.v1';

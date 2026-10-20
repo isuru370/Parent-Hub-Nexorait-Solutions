@@ -58,6 +58,10 @@ class AuthService
 
                 $registration->forceFill(['last_login_at' => now()])->save();
 
+                // Newer NexoraEDU versions return a parent API token: the app must
+                // send it as "Authorization: Bearer <token>" to {api_url}/api/parent/v1/*.
+                $token = $data['token'] ?? ($data['data']['token'] ?? null);
+
                 return [
                     'status' => true,
                     'message' => $data['message'] ?? 'Login successful',
@@ -67,6 +71,8 @@ class AuthService
                         'name' => $institute->name,
                         'logo' => $institute->logo,
                     ],
+                    'token' => $token,
+                    'token_type' => $token ? 'Bearer' : null,
                     'data' => $data['data'] ?? [],
                 ];
             } catch (ConnectionException $e) {

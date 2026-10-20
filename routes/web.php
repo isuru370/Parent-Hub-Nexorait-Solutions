@@ -7,12 +7,14 @@ use App\Http\Controllers\Web\Admin\InstituteController;
 use App\Http\Controllers\Web\Admin\SettingController;
 use App\Http\Controllers\Web\Admin\StudentController;
 use App\Http\Controllers\Web\Auth\LoginController;
+use App\Http\Controllers\Web\FirebaseServiceWorkerController;
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\Portal\PushTokenController;
 use App\Http\Controllers\Web\Portal\PortalController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
+Route::get('/firebase-messaging-sw.js', FirebaseServiceWorkerController::class)->name('firebase.sw');
 
 Route::get('/privacy-policy', function () {
     return view('privacy_policy');
@@ -67,4 +69,5 @@ Route::prefix('portal')->name('portal.')->middleware('portal')->group(function (
     Route::post('/notifications/read-all', [PortalController::class, 'readAllNotifications'])->name('notifications.read-all');
     Route::get('/profile', [PortalController::class, 'profile'])->name('profile');
     Route::put('/password', [PortalController::class, 'changePassword'])->name('password');
+    Route::post('/push-token', [PushTokenController::class, 'store'])->middleware('throttle:10,1')->name('push-token');
 });

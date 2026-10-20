@@ -20,13 +20,26 @@ class PortalSession
     {
         $this->session->regenerate();
 
+        $student = $loginResult['data'] ?? [];
+
+        // The institute's parent API token (newer NexoraEDU versions) - kept
+        // apart from the student details so it is never shown on a page.
+        $token = $student['token'] ?? ($loginResult['token'] ?? null);
+        unset($student['token'], $student['token_type']);
+
         $this->session->put(self::KEY, [
             'username' => $username,
             'api_url' => $loginResult['api_url'],
             'institute' => $loginResult['institute'] ?? [],
-            'student' => $loginResult['data'] ?? [],
+            'student' => $student,
+            'token' => is_string($token) && $token !== '' ? $token : null,
             'logged_in_at' => now()->toIso8601String(),
         ]);
+    }
+
+    public function token(): ?string
+    {
+        return $this->session->get(self::KEY . '.token');
     }
 
     public function check(): bool
@@ -63,6 +76,19 @@ class PortalSession
     public function username(): ?string
     {
         return $this->session->get(self::KEY . '.username');
+    }
+
+    /** The browser push token sent to the institute for this login, if any. */
+    public function pushDevice(): ?array
+    {
+        $device = $this->session->get(self::KEY . '.push');
+
+        return is_array($device) && !empty($device['token']) ? $device : null;
+    }
+
+    public function setPushDevice(array $device): void
+    {
+        $this->session->put(self::KEY . '.push', $device);
     }
 
     public function forget(): void
