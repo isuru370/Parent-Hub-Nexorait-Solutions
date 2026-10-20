@@ -80,9 +80,9 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
 
-        // Stop this browser getting the student's notifications.
-        if ($device = $this->portal->pushDevice()) {
-            app(PortalApi::class)->removeFcmToken($device);
+        // Revoke the institute token and stop this browser's notifications.
+        if ($this->portal->check()) {
+            app(PortalApi::class)->logout($this->portal->pushDevice());
         }
 
         $this->portal->forget();

@@ -122,6 +122,27 @@ class PortalApi
         ];
     }
 
+    /**
+     * Log out at the institute: revokes the parent API token and turns off
+     * this browser's notifications. Never throws.
+     */
+    public function logout(?array $pushDevice): void
+    {
+        if (!$this->portal->token()) {
+            if ($pushDevice) {
+                $this->removeFcmToken($pushDevice);
+            }
+
+            return;
+        }
+
+        try {
+            $this->call('/auth/logout', ['device_id' => $pushDevice['device_id'] ?? null], 5);
+        } catch (Throwable $e) {
+            Log::info('Could not log out at the institute', ['error' => $e->getMessage()]);
+        }
+    }
+
     /** Mark this browser's token inactive at the institute (on log out). Never throws. */
     public function removeFcmToken(array $device): void
     {
@@ -160,7 +181,7 @@ class PortalApi
         }
 
         try {
-            $response = $this->client->post($apiUrl, $path, ['student_id' => $studentId] + $extra, $timeout);
+            $response = $this->client->post($apiUrl, $path, ['student_id' => $studentId] + $extra, $timeout, $this->portal->token());
         } catch (Throwable $e) {
             Log::warning('Institute API unreachable', ['path' => $path, 'error' => $e->getMessage()]);
 
@@ -178,6 +199,11 @@ class PortalApi
         }
 
         $json['_http_status'] = $response->status();
+
+        // The institute no longer accepts this login's token (expired, password changed, ...)
+        if ($response->status() === 401 && $this->portal->token()) {
+            throw new RuntimeException('Your login has expired. Please log out and log in again.');
+        }
 
         return $json;
     }
