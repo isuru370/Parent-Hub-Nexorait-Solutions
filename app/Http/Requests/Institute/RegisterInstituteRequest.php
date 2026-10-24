@@ -48,6 +48,13 @@ class RegisterInstituteRequest extends FormRequest
                 'max:20',
             ],
 
+            // Full URL of the institute logo (INSTITUTE_LOGO on the institute)
+            'logo' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
+
             'app_version' => [
                 'nullable',
                 'string',
