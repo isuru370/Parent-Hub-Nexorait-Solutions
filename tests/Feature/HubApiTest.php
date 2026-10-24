@@ -39,6 +39,46 @@ class HubApiTest extends TestCase
             ->assertUnauthorized();
     }
 
+    public function test_re_registering_updates_details_but_keeps_a_disabled_institute_disabled(): void
+    {
+        $this->postJson('/api/v1/register-institute', [
+            'secret_key' => 'hub-secret',
+            'institute_code' => 'SHEI',
+            'institute_name' => 'Savidya',
+            'api_url' => 'https://savidya.lk',
+            'logo' => 'https://savidya.lk/logo/logo.png',
+        ])->assertOk()->assertJsonPath('data.code', 'SHEI');
+
+        $institute = \App\Models\Institute::where('code', 'SHEI')->firstOrFail();
+        $this->assertTrue($institute->status, 'a new institute starts active');
+        $this->assertSame('https://savidya.lk/logo/logo.png', $institute->logo);
+
+        // disabled in the hub admin
+        $institute->update(['status' => false, 'name' => 'Edited in hub']);
+
+        // next deploy: details from the institute .env win, status does not change
+        $this->postJson('/api/v1/register-institute', [
+            'secret_key' => 'hub-secret',
+            'institute_code' => 'SHEI',
+            'institute_name' => 'Savidya Higher Education Institute',
+            'api_url' => 'https://savidya.nexorait.lk',
+            'contact_mobile' => '0771234567',
+        ])->assertOk();
+
+        $institute->refresh();
+        $this->assertFalse($institute->status);
+        $this->assertSame('Savidya Higher Education Institute', $institute->name);
+        $this->assertSame('https://savidya.nexorait.lk', $institute->api_url);
+        $this->assertSame('0771234567', $institute->contact_number);
+        $this->assertSame('https://savidya.lk/logo/logo.png', $institute->logo, 'no logo sent = keep the saved one');
+        $this->assertSame(1, \App\Models\Institute::where('code', 'SHEI')->count());
+
+        $this->postJson('/api/v1/register-institute', [
+            'secret_key' => 'hub-secret', 'institute_code' => 'SHEI', 'institute_name' => 'S',
+            'api_url' => 'https://s.lk', 'logo' => 'not a url',
+        ])->assertStatus(422)->assertJsonValidationErrors('logo');
+    }
+
     public function test_student_of_unknown_institute_is_rejected(): void
     {
         $this->postJson('/api/v1/register-student', [
