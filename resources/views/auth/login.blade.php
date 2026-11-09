@@ -12,10 +12,10 @@
 <div class="grid min-h-screen lg:grid-cols-[1.05fr_1fr]">
 
     {{-- Brand side --}}
-    <aside class="relative hidden overflow-hidden bg-gradient-to-br from-red-600 via-red-600 to-orange-500 p-12 text-white lg:flex lg:flex-col">
+    <aside class="relative hidden overflow-hidden hero p-12 text-white lg:flex lg:flex-col">
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/15 font-extrabold ring-1 ring-white/30">N</span>
-            <span class="text-lg font-extrabold">Nexora <span class="font-medium text-white/80">Parent Hub</span></span>
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-gold-300 to-gold-600 font-extrabold text-navy-900">N</span>
+            <span class="text-lg font-extrabold">Nexora <span class="font-medium text-gold-300">Parent Hub</span></span>
         </a>
 
         <div class="mt-auto max-w-md">
@@ -40,18 +40,18 @@
             </dl>
         </div>
 
-        <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-orange-400/30 blur-3xl"></div>
+        <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-gold-400/20 blur-3xl"></div>
     </aside>
 
     {{-- Form side --}}
     <main class="flex items-center justify-center px-5 py-10 sm:px-10">
         <div class="w-full max-w-sm">
             <a href="{{ route('home') }}" class="mb-10 flex items-center gap-3 lg:hidden">
-                <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-red-600 to-orange-500 font-extrabold text-white">N</span>
-                <span class="text-lg font-extrabold">Nexora <span class="font-medium text-red-600">Parent Hub</span></span>
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy-900 font-extrabold text-gold-300">N</span>
+                <span class="text-lg font-extrabold">Nexora <span class="font-medium text-gold-600">Parent Hub</span></span>
             </a>
 
-            <h2 class="text-2xl font-extrabold">Log in</h2>
+            <h2 class="text-2xl font-extrabold text-navy-900">Log in</h2>
             <p class="mt-1 text-sm text-gray-500">One login for parents, students and hub admins.</p>
 
             @if (session('status'))
@@ -65,7 +65,7 @@
                     <label for="login" class="mb-1.5 block text-sm font-semibold">Student ID or email</label>
                     <input id="login" name="login" type="text" value="{{ old('login') }}" required autofocus
                         autocomplete="username" autocapitalize="none" spellcheck="false"
-                        class="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-red-500 focus:ring-4 focus:ring-red-500/15 @error('login') border-red-500 @enderror"
+                        class="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-navy-600 focus:ring-4 focus:ring-navy-600/15 @error('login') border-red-500 @enderror"
                         placeholder="SA10001">
                     <p id="loginHint" class="mt-1.5 text-xs text-gray-500" aria-live="polite">Parents: use the student ID from the SMS.</p>
                 </div>
@@ -74,7 +74,7 @@
                     <label for="password" class="mb-1.5 block text-sm font-semibold">Password</label>
                     <div class="relative">
                         <input id="password" name="password" type="password" required autocomplete="current-password"
-                            class="block w-full rounded-xl border border-gray-300 px-4 py-3 pr-16 text-base outline-none transition focus:border-red-500 focus:ring-4 focus:ring-red-500/15">
+                            class="block w-full rounded-xl border border-gray-300 px-4 py-3 pr-16 text-base outline-none transition focus:border-navy-600 focus:ring-4 focus:ring-navy-600/15">
                         <button type="button" id="togglePassword"
                             class="absolute inset-y-0 right-0 px-4 text-sm font-semibold text-gray-500 hover:text-gray-800">Show</button>
                     </div>
@@ -88,12 +88,12 @@
                 @enderror
 
                 <label id="rememberRow" class="hidden items-center gap-2 text-sm text-gray-600">
-                    <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-gray-300 text-red-600">
+                    <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-gray-300 text-navy-700">
                     Keep me logged in
                 </label>
 
                 <button type="submit" id="submitBtn"
-                    class="w-full rounded-xl bg-red-600 px-4 py-3 text-base font-semibold text-white shadow-lg shadow-red-500/25 transition hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-500/30 disabled:opacity-60">
+                    class="w-full rounded-xl bg-navy-900 px-4 py-3 text-base font-semibold text-white shadow-lg shadow-navy-900/25 transition hover:bg-navy-800 focus:outline-none focus:ring-4 focus:ring-navy-600/30 disabled:opacity-60">
                     Log in
                 </button>
             </form>

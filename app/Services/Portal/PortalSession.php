@@ -70,7 +70,11 @@ class PortalSession
 
     public function institute(): array
     {
-        return (array) $this->session->get(self::KEY . '.institute', []);
+        $registry = (array) $this->session->get(self::KEY . '.institute', []);
+        $fromInstitute = (array) $this->session->get(self::KEY . '.flags.institute', []);
+
+        // The hub registry wins; the institute's own details fill the gaps
+        return array_filter($registry, fn ($v) => $v !== null && $v !== '') + array_filter($fromInstitute, fn ($v) => $v !== null && $v !== '');
     }
 
     public function username(): ?string
@@ -89,6 +93,17 @@ class PortalSession
     public function setPushDevice(array $device): void
     {
         $this->session->put(self::KEY . '.push', $device);
+    }
+
+    /** Small per-login flags (e.g. whether the student has courses). */
+    public function flag(string $key, mixed $default = null): mixed
+    {
+        return $this->session->get(self::KEY . '.flags.' . $key, $default);
+    }
+
+    public function setFlag(string $key, mixed $value): void
+    {
+        $this->session->put(self::KEY . '.flags.' . $key, $value);
     }
 
     public function forget(): void
