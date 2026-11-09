@@ -11,8 +11,8 @@
     <div class="space-y-5">
         @forelse ($classes as $class)
             <section>
-                <h2 class="mb-2 font-bold">{{ $class['class_name'] ?? 'Class' }} <span class="text-sm font-normal text-gray-500">{{ $class['subject_name'] ?? '' }}</span></h2>
-                <div class="divide-y divide-stone-100 overflow-hidden rounded-2xl border border-stone-200 bg-white">
+                <h2 class="mb-2 text-lg font-bold text-navy-900">{{ $class['class_name'] ?? 'Class' }} <span class="text-sm font-normal text-gray-500">{{ $class['subject_name'] ?? '' }}</span></h2>
+                <div class="divide-y divide-slate-100 overflow-hidden card">
                     @forelse ($class['exams'] ?? [] as $exam)
                         @php
                             $status = $exam['status'] ?? 'scheduled';
@@ -20,13 +20,13 @@
                             $tone = match ($status) {
                                 'completed' => 'bg-emerald-50 text-emerald-700',
                                 'ongoing' => 'bg-amber-50 text-amber-700',
-                                'cancelled' => 'bg-stone-100 text-gray-500 line-through',
-                                default => 'bg-sky-50 text-sky-700',
+                                'cancelled' => 'bg-slate-100 text-gray-500 line-through',
+                                default => 'bg-navy-50 text-navy-700',
                             };
                         @endphp
                         <a @if ($done) href="{{ route('portal.result', $exam['exam_id']) }}" @endif
-                            class="flex items-center gap-4 p-4 {{ $done ? 'hover:bg-stone-50' : '' }}">
-                            <div class="w-12 shrink-0 rounded-xl bg-stone-100 py-1.5 text-center">
+                            class="flex items-center gap-4 p-4 {{ $done ? 'hover:bg-slate-50' : '' }}">
+                            <div class="w-12 shrink-0 rounded-xl bg-slate-100 py-1.5 text-center">
                                 <p class="text-lg font-extrabold leading-none">{{ Fmt::date($exam['exam_date'] ?? null, 'd') }}</p>
                                 <p class="text-[11px] font-semibold text-gray-500">{{ Fmt::date($exam['exam_date'] ?? null, 'M') }}</p>
                             </div>
@@ -46,7 +46,7 @@
                 </div>
             </section>
         @empty
-            <div class="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center text-sm text-gray-500">No exams yet.</div>
+            <div class="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-gray-500">No exams yet.</div>
         @endforelse
     </div>
 @endsection

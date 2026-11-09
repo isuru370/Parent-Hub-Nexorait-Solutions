@@ -1,0 +1,73 @@
+{
+    "status": true,
+    "message": "Profile fetched successfully",
+    "data": {
+        "institute": {
+            "code": null,
+            "name": "Savidya Institute",
+            "short_name": "SavidyaEdu",
+            "tagline": "Empowering minds, shaping futures through excellence in education",
+            "logo_url": "http://localhost/logo/logo.png",
+            "app_url": "http://localhost"
+        },
+        "branch": {
+            "id": 1,
+            "name": "Colombo",
+            "address": "",
+            "mobile": null,
+            "email": null
+        },
+        "student": {
+            "student_id": 1,
+            "custom_id": "S1",
+            "full_name": "A. Silva",
+            "initial_name": "A. Silva",
+            "gender": "male",
+            "bday": null,
+            "nic": null,
+            "mobile": null,
+            "whatsapp_mobile": null,
+            "email": null,
+            "address": "",
+            "grade_name": "10",
+            "class_type": "Offline",
+            "student_school": null,
+            "img_url": "",
+            "admission": false,
+            "is_active": true,
+            "registered_at": null
+        },
+        "guardian": {
+            "name": "",
+            "nic": null,
+            "mobile": "0771234567"
+        },
+        "card": {
+            "qr_code": "S1",
+            "qr_type": "permanent",
+            "expires_at": null,
+            "qr_svg": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyNDAiIHZpZXdCb3g9IjAgMCAyNDAgMjQwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgZmlsbD0iI2ZmZmZmZiIvPjxnIHRyYW5zZm9ybT0ic2NhbGUoMTAuNDM1KSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSwxKSI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMTAgMEwxMCAyTDExIDJMMTEgNEwxMCA0TDEwIDVMOSA1TDkgMkw4IDJMOCA4TDkgOEw5IDlMOCA5TDggMTBMNiAxMEw2IDlMNyA5TDcgOEwyIDhMMiAxMEwxIDEwTDEgMTFMMCAxMUwwIDEyTDEgMTJMMSAxM0wyIDEzTDIgMTFMMyAxMUwzIDEyTDQgMTJMNCAxM0w1IDEzTDUgMTJMNCAxMkw0IDExTDMgMTFMMyAxMEw2IDEwTDYgMTFMOCAxMUw4IDEyTDYgMTJMNiAxM0w4IDEzTDggMTRMOSAxNEw5IDEzTDggMTNMOCAxMkwxMSAxMkwxMSAxNEwxMCAxNEwxMCAxNUw4IDE1TDggMTlMOSAxOUw5IDIwTDggMjBMOCAyMUwxMiAyMUwxMiAyMEwxMCAyMEwxMCAxOUw5IDE5TDkgMThMMTEgMThMMTEgMTlMMTIgMTlMMTIgMThMMTMgMThMMTMgMTlMMTQgMTlMMTQgMThMMTMgMThMMTMgMTZMMTUgMTZMMTUgMThMMTYgMThMMTYgMTlMMTUgMTlMMTUgMjBMMTYgMjBMMTYgMjFMMTkgMjFMMTkgMTZMMjAgMTZMMjAgMTRMMTkgMTRMMTkgMTZMMTggMTZMMTggMTVMMTcgMTVMMTcgMTZMMTggMTZMMTggMThMMTYgMThMMTYgMTZMMTUgMTZMMTUgMTVMMTYgMTVMMTYgMTRMMTUgMTRMMTUgMTNMMTQgMTNMMTQgMTJMMTMgMTJMMTMgMTNMMTIgMTNMMTIgMTJMMTEgMTJMMTEgMTFMMTIgMTFMMTIgMTBMMTMgMTBMMTMgMTFMMTQgMTFMMTQgMTBMMTMgMTBMMTMgM0wxMiAzTDEyIDJMMTEgMkwxMSAwWk0xMiAwTDEyIDFMMTMgMUwxMyAwWk0xMSA1TDExIDdMMTIgN0wxMiA1Wk05IDZMOSA4TDEwIDhMMTAgMTFMMTEgMTFMMTEgMTBMMTIgMTBMMTIgOEwxMCA4TDEwIDZaTTAgOEwwIDlMMSA5TDEgOFpNMTQgOEwxNCA5TDE1IDlMMTUgMTBMMTYgMTBMMTYgMTFMMTUgMTFMMTUgMTJMMTYgMTJMMTYgMTNMMTcgMTNMMTcgMTRMMTggMTRMMTggMTNMMjEgMTNMMjEgMTBMMjAgMTBMMjAgOUwxOSA5TDE5IDhaTTE2IDlMMTYgMTBMMTcgMTBMMTcgMTNMMTggMTNMMTggOVpNOCAxMEw4IDExTDkgMTFMOSAxMFpNMTkgMTFMMTkgMTJMMjAgMTJMMjAgMTFaTTExIDE0TDExIDE1TDEwIDE1TDEwIDE2TDExIDE2TDExIDE4TDEyIDE4TDEyIDE2TDExIDE2TDExIDE1TDEyIDE1TDEyIDE0Wk0xMyAxNEwxMyAxNUwxNCAxNUwxNCAxNFpNMTcgMTlMMTcgMjBMMTggMjBMMTggMTlaTTIwIDE5TDIwIDIwTDIxIDIwTDIxIDE5Wk0xMyAyMEwxMyAyMUwxNCAyMUwxNCAyMFpNMCAwTDAgN0w3IDdMNyAwWk0xIDFMMSA2TDYgNkw2IDFaTTIgMkwyIDVMNSA1TDUgMlpNMTQgMEwxNCA3TDIxIDdMMjEgMFpNMTUgMUwxNSA2TDIwIDZMMjAgMVpNMTYgMkwxNiA1TDE5IDVMMTkgMlpNMCAxNEwwIDIxTDcgMjFMNyAxNFpNMSAxNUwxIDIwTDYgMjBMNiAxNVpNMiAxNkwyIDE5TDUgMTlMNSAxNloiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9nPjwvc3ZnPgo="
+        },
+        "login": {
+            "username": "S1",
+            "last_login_at": "2026-11-09T04:30:00.000000Z"
+        },
+        "classes": [
+            {
+                "enrollment_id": 1,
+                "class_id": 1,
+                "class_name": "Maths 10 CMB",
+                "subject": "Maths",
+                "teacher": "Nimal Perera",
+                "grade": "10",
+                "medium": "Sinhala",
+                "class_type": "offline",
+                "category": "Theory",
+                "branch": "Colombo",
+                "monthly_fee": 2000,
+                "is_free_card": false,
+                "enrolled_at": "2026-01-01"
+            }
+        ]
+    }
+}

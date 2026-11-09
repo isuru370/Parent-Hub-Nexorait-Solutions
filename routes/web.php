@@ -65,6 +65,10 @@ Route::prefix('portal')->name('portal.')->middleware('portal')->group(function (
     Route::get('/exams', [PortalController::class, 'exams'])->name('exams');
     Route::get('/exams/{exam}', [PortalController::class, 'result'])->whereNumber('exam')->name('result');
     Route::get('/schedule', [PortalController::class, 'schedule'])->name('schedule');
+    Route::get('/courses', [PortalController::class, 'courses'])->name('courses');
+    Route::get('/courses/{course}', [PortalController::class, 'course'])->whereNumber('course')->name('course');
+    Route::get('/teachers', [PortalController::class, 'teachers'])->name('teachers');
+    Route::get('/id-card', [PortalController::class, 'idCard'])->name('id-card');
     Route::get('/notifications', [PortalController::class, 'notifications'])->name('notifications');
     Route::post('/notifications/read-all', [PortalController::class, 'readAllNotifications'])->name('notifications.read-all');
     Route::get('/profile', [PortalController::class, 'profile'])->name('profile');

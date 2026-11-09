@@ -50,6 +50,23 @@ class PortalApi
         return $this->data('/schedule');
     }
 
+    /** Registered details, institute, branch, card QR, classes (read only). */
+    public function profile(): array
+    {
+        return $this->data('/profile');
+    }
+
+    /** ['enabled' => bool, 'courses' => [...]] */
+    public function courses(): array
+    {
+        return $this->data('/courses');
+    }
+
+    public function teachers(): array
+    {
+        return $this->data('/teachers');
+    }
+
     public function notifications(int $page = 1): array
     {
         return $this->data('/notifications', ['page' => $page]);
