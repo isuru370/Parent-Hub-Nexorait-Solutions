@@ -1,0 +1,168 @@
+{
+    "status": true,
+    "message": "Courses fetched successfully",
+    "data": {
+        "enabled": true,
+        "courses": [
+            {
+                "enrollment_id": 1,
+                "course_id": 1,
+                "name": "Diploma in IT",
+                "code": "CMB-C26001",
+                "branch": "Colombo",
+                "status": "ongoing",
+                "start_date": "2026-11-01",
+                "end_date": "2027-04-30",
+                "schedule": "Sat 08:00 AM - 12:00 PM · Sun 08:00 AM - 12:00 PM",
+                "enrolled_at": "2026-11-09",
+                "fees": {
+                    "payment_plan": "installment",
+                    "total_fee": 12000,
+                    "standard_fee": 12000,
+                    "special_fee": false,
+                    "discount": 0,
+                    "paid": 2500,
+                    "balance": 9500,
+                    "overdue": 0,
+                    "next_installment": {
+                        "id": 2,
+                        "installment_no": 2,
+                        "amount": 2000,
+                        "paid": 500,
+                        "remaining": 1500,
+                        "due_date": "2026-12-01",
+                        "status": "partly_paid"
+                    },
+                    "installments": [
+                        {
+                            "id": 1,
+                            "installment_no": 1,
+                            "amount": 2000,
+                            "paid": 2000,
+                            "remaining": 0,
+                            "due_date": "2026-11-01",
+                            "status": "paid"
+                        },
+                        {
+                            "id": 2,
+                            "installment_no": 2,
+                            "amount": 2000,
+                            "paid": 500,
+                            "remaining": 1500,
+                            "due_date": "2026-12-01",
+                            "status": "partly_paid"
+                        },
+                        {
+                            "id": 3,
+                            "installment_no": 3,
+                            "amount": 2000,
+                            "paid": 0,
+                            "remaining": 2000,
+                            "due_date": "2027-01-01",
+                            "status": "due"
+                        },
+                        {
+                            "id": 4,
+                            "installment_no": 4,
+                            "amount": 2000,
+                            "paid": 0,
+                            "remaining": 2000,
+                            "due_date": "2027-02-01",
+                            "status": "due"
+                        },
+                        {
+                            "id": 5,
+                            "installment_no": 5,
+                            "amount": 2000,
+                            "paid": 0,
+                            "remaining": 2000,
+                            "due_date": "2027-03-01",
+                            "status": "due"
+                        },
+                        {
+                            "id": 6,
+                            "installment_no": 6,
+                            "amount": 2000,
+                            "paid": 0,
+                            "remaining": 2000,
+                            "due_date": "2027-04-01",
+                            "status": "due"
+                        }
+                    ]
+                },
+                "payments": [
+                    {
+                        "id": 1,
+                        "amount": 2500,
+                        "receipt_number": "REC-000001",
+                        "payment_method": "cash",
+                        "paid_at": "2026-11-09T04:30:00.000000Z"
+                    }
+                ],
+                "attendance": {
+                    "held": 0,
+                    "attended": 0,
+                    "percentage": 0,
+                    "history": []
+                },
+                "upcoming_sessions": [
+                    {
+                        "id": 4,
+                        "date": "2026-11-14",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    },
+                    {
+                        "id": 5,
+                        "date": "2026-11-15",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    },
+                    {
+                        "id": 6,
+                        "date": "2026-11-21",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    },
+                    {
+                        "id": 7,
+                        "date": "2026-11-22",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    },
+                    {
+                        "id": 8,
+                        "date": "2026-11-28",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    },
+                    {
+                        "id": 9,
+                        "date": "2026-11-29",
+                        "start_time": "08:00",
+                        "end_time": "12:00",
+                        "hall": null,
+                        "status": "scheduled",
+                        "is_extra": false
+                    }
+                ],
+                "cancelled_sessions": []
+            }
+        ]
+    }
+}

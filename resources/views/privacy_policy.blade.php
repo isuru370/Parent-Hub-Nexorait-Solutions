@@ -41,14 +41,14 @@
 @endphp
 
 <main class="relative overflow-hidden">
-    <div class="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-orange-200/40 blur-3xl"></div>
+    <div class="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-gold-200/40 blur-3xl"></div>
 
     <div class="relative mx-auto max-w-3xl px-4 pb-20 pt-14 sm:px-6 lg:pt-20">
         <p class="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-3 py-1 text-xs font-semibold text-red-700">
             <x-icon name="shield" class="h-4 w-4" /> Privacy policy
         </p>
         <h1 class="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Nexora Parent Hub <span class="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Privacy Policy</span>
+            Nexora Parent Hub <span class="bg-gradient-to-r from-navy-700 to-gold-600 bg-clip-text text-transparent">Privacy Policy</span>
         </h1>
         <p class="mt-3 text-sm text-gray-500">Last updated: October 2026</p>
 
@@ -56,7 +56,7 @@
             <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Contents</p>
             <ol class="mt-3 grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
                 @foreach ($sections as $i => [$title])
-                    <li><a href="#section-{{ $i + 1 }}" class="text-gray-700 hover:text-red-600">{{ $i + 1 }}. {{ $title }}</a></li>
+                    <li><a href="#section-{{ $i + 1 }}" class="text-gray-700 hover:text-navy-700">{{ $i + 1 }}. {{ $title }}</a></li>
                 @endforeach
             </ol>
         </nav>
@@ -66,7 +66,7 @@
                 @php [$title, $paragraphs] = $section; $items = $section[2] ?? []; @endphp
                 <section id="section-{{ $i + 1 }}" class="scroll-mt-20">
                     <h2 class="flex items-center gap-3 text-xl font-extrabold">
-                        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-red-50 text-sm font-bold text-red-600">{{ $i + 1 }}</span>
+                        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-navy-50 text-sm font-bold text-navy-700">{{ $i + 1 }}</span>
                         {{ $title }}
                     </h2>
                     @foreach ($paragraphs as $paragraph)
@@ -76,7 +76,7 @@
                         <ul class="mt-4 grid gap-2 sm:grid-cols-2">
                             @foreach ($items as $item)
                                 <li class="flex items-center gap-2.5 rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-700">
-                                    <x-icon name="check" class="h-4 w-4 shrink-0 text-red-600" /> {{ $item }}
+                                    <x-icon name="check" class="h-4 w-4 shrink-0 text-gold-600" /> {{ $item }}
                                 </li>
                             @endforeach
                         </ul>

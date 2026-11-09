@@ -14,7 +14,8 @@ use RuntimeException;
 
 /**
  * Student / parent portal. Every page reads live data from the
- * student's institute through PortalApi.
+ * student's institute through PortalApi. Everything is read only except
+ * the password.
  */
 class PortalController extends Controller
 {
@@ -32,10 +33,15 @@ class PortalController extends Controller
             $attendance = rescue(fn () => $this->api->attendance()['summary'] ?? null, null, false);
             $payments = rescue(fn () => $this->api->payments(), null, false);
 
+            $courses = is_array($dashboard['courses'] ?? null) ? $dashboard['courses'] : [];
+            $this->portal->setFlag('has_courses', $courses !== []);
+            $this->rememberInstitute($dashboard['institute'] ?? null);
+
             return [
                 'dashboard' => $dashboard,
                 'attendanceSummary' => $attendance,
                 'paymentClasses' => $payments['classes'] ?? [],
+                'courses' => $courses,
                 'notice' => SystemSetting::get('portal_notice'),
             ];
         });
@@ -80,6 +86,44 @@ class PortalController extends Controller
         });
     }
 
+    public function teachers(): View
+    {
+        return $this->page('portal.teachers', function () {
+            $teachers = collect($this->api->teachers())->filter(fn ($t) => is_array($t));
+
+            return [
+                'teachers' => $teachers->where('is_my_teacher', true)->values()->all(),
+            ];
+        });
+    }
+
+    public function courses(): View
+    {
+        return $this->page('portal.courses', function () {
+            $data = $this->coursesData();
+
+            return ['courses' => $data['courses'], 'coursesEnabled' => $data['enabled']];
+        });
+    }
+
+    public function course(int $course): View
+    {
+        return $this->page('portal.course', function () use ($course) {
+            $found = collect($this->coursesData()['courses'])->firstWhere('course_id', $course);
+
+            if (!$found) {
+                throw new RuntimeException('This course was not found.');
+            }
+
+            return ['course' => $found];
+        });
+    }
+
+    public function idCard(): View
+    {
+        return $this->page('portal.id-card', fn () => ['profile' => $this->profileData()]);
+    }
+
     public function notifications(Request $request): View
     {
         $page = max(1, (int) $request->query('page', 1));
@@ -103,12 +147,18 @@ class PortalController extends Controller
 
     public function profile(): View
     {
+        // The full profile comes from the institute; older institutes only
+        // have what was returned at login.
+        $profile = rescue(fn () => $this->profileData(), null, false);
+
         return view('portal.profile', [
+            'profile' => $profile,
             'student' => $this->portal->student(),
             'institute' => $this->portal->institute(),
             'username' => $this->portal->username(),
-            'supportPhone' => SystemSetting::get('support_phone'),
+            'supportPhone' => SystemSetting::get('support_phone') ?: '0768971213',
             'supportEmail' => SystemSetting::get('support_email'),
+            'hasCourses' => (bool) $this->portal->flag('has_courses', false),
         ]);
     }
 
@@ -136,6 +186,50 @@ class PortalController extends Controller
             : back()->withErrors(['current_password' => $result['message']]);
     }
 
+    /** ['enabled' => bool, 'courses' => list] */
+    protected function coursesData(): array
+    {
+        try {
+            $data = $this->api->courses();
+        } catch (RuntimeException $e) {
+            // Institute not updated yet: no /courses route
+            if (str_contains(strtolower($e->getMessage()), 'not found')) {
+                return ['enabled' => false, 'courses' => []];
+            }
+
+            throw $e;
+        }
+
+        $courses = array_values(array_filter((array) ($data['courses'] ?? []), 'is_array'));
+        $this->portal->setFlag('has_courses', $courses !== []);
+
+        return ['enabled' => (bool) ($data['enabled'] ?? false), 'courses' => $courses];
+    }
+
+    protected function profileData(): array
+    {
+        $profile = $this->api->profile();
+        $this->rememberInstitute($profile['institute'] ?? null);
+
+        return $profile;
+    }
+
+    /** Keep the institute's own name / logo when the hub registry has none. */
+    protected function rememberInstitute(mixed $institute): void
+    {
+        if (!is_array($institute) || empty($institute['name'])) {
+            return;
+        }
+
+        $current = $this->portal->institute();
+
+        $this->portal->setFlag('institute', [
+            'name' => $institute['name'],
+            'logo' => $current['logo'] ?? ($institute['logo_url'] ?? null),
+            'tagline' => $institute['tagline'] ?? null,
+        ]);
+    }
+
     /**
      * Render a page; if the institute cannot be reached show the error
      * inside the page instead of a 500.
@@ -153,7 +247,8 @@ class PortalController extends Controller
         // Empty values so the page still renders around the error message
         $defaults = [
             'dashboard' => [], 'attendanceSummary' => null, 'paymentClasses' => [], 'notice' => null,
-            'attendance' => [], 'payments' => [], 'exams' => [], 'result' => [],
+            'attendance' => [], 'payments' => [], 'exams' => [], 'result' => [], 'courses' => [],
+            'coursesEnabled' => false, 'course' => [], 'teachers' => [], 'profile' => [],
             'upcoming' => collect(), 'past' => collect(), 'notifications' => [], 'page' => 1,
         ];
 
@@ -161,6 +256,7 @@ class PortalController extends Controller
             'error' => $error,
             'student' => $this->portal->student(),
             'institute' => $this->portal->institute(),
+            'hasCourses' => (bool) $this->portal->flag('has_courses', false),
         ]);
     }
 }

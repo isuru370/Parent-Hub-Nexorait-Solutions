@@ -1,0 +1,89 @@
+{
+    "success": true,
+    "message": "Teachers retrieved successfully.",
+    "data": [
+        {
+            "id": 1,
+            "custom_id": "T1",
+            "full_name": "Nimal Perera",
+            "initials": "N.",
+            "mobile": "0770000000",
+            "email": "t@test.lk",
+            "is_active": true,
+            "is_my_teacher": true,
+            "classes": [
+                {
+                    "id": 1,
+                    "teacher_id": 1,
+                    "class_name": "Maths 10 CMB",
+                    "medium": "Sinhala",
+                    "class_type": "offline",
+                    "grade_id": 1,
+                    "is_active": true,
+                    "is_ongoing": false,
+                    "is_my_class": true,
+                    "grade": {
+                        "id": 1,
+                        "grade_name": "10"
+                    },
+                    "categories": [
+                        {
+                            "id": 1,
+                            "category_name": "Theory",
+                            "pivot": {
+                                "student_class_id": 1,
+                                "class_category_id": 1,
+                                "id": 1,
+                                "is_active": 1,
+                                "deleted_at": null,
+                                "created_at": null,
+                                "updated_at": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "teacher_id": 1,
+                    "class_name": "Maths 10 KDY",
+                    "medium": "Sinhala",
+                    "class_type": "offline",
+                    "grade_id": 1,
+                    "is_active": true,
+                    "is_ongoing": false,
+                    "is_my_class": false,
+                    "grade": {
+                        "id": 1,
+                        "grade_name": "10"
+                    },
+                    "categories": [
+                        {
+                            "id": 1,
+                            "category_name": "Theory",
+                            "pivot": {
+                                "student_class_id": 2,
+                                "class_category_id": 1,
+                                "id": 2,
+                                "is_active": 1,
+                                "deleted_at": null,
+                                "created_at": null,
+                                "updated_at": null
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "custom_id": "T2",
+            "full_name": "Sunil Silva",
+            "initials": "S.",
+            "mobile": "0770000001",
+            "email": "t2@test.lk",
+            "is_active": true,
+            "is_my_teacher": false,
+            "classes": []
+        }
+    ]
+}
